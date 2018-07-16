@@ -9,27 +9,392 @@
     <link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/bootstrap/css/bootstrap.min.css' %}">
     <script type="text/javascript" src="{% static 'draw/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'draw/vendor/paper/paper-full.min.js' %}"></script>
+    <!--  Import CSS    -->
+    <link rel="stylesheet" href="../../static/draw/vendor/bootstrap/css/bootstrap.css">
 
     <style type="text/css">
+
+    #myCanvas{
+			  padding-top: 0;
+        padding-left: 0;
+		    padding-right: 0;
+        margin-top:40px;
+		    margin-left: auto;
+		    margin-right: auto;
+		    display: block;
+        -webkit-box-shadow: 0px 17px 84px -25px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 17px 84px -25px rgba(0,0,0,0.75);
+        box-shadow: 0px 17px 84px -25px rgba(0,0,0,0.75); 
+    }
+
+      .customsection{
+        padding:200px;
+        text-align:center;
+        position:relative;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+      }
+      .wrapper{
+        border:1px solid black;
+        width:375px;
+        height:667px;
+        top:50%;
+        left:50%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+        border-radius:8px;
+      }
+      .headtext{
+        padding-bottom:30px;
+      }
+      .profile{
+        width:140px;
+        height:140px;
+        border-radius:50%;
+        border:3px dashed #4A90E2;
+/*         background-color: #979797; */
+        margin:25px;
+      }
+      .profile2{
+        width:140px;
+        height:140px;
+        border-radius:50%;
+        border:3px dashed #D0021B;
+/*         background-color: #979797; */
+        margin:25px;
+      }
+      .textstyle{
+        margin:3px;
+        color:#979797;
+        font-family:Courier New;
+      }
+      .statusdiv{
+        text-align:left;
+/*         border:1px solid black; */ 
+        margin:15px;
+      }
+      .reqbtn{
+        margin:30px;
+        padding:8px;
+        border: 2px solid #979797;
+        width:220px;
+        border-radius:30px;
+        cursor:pointer; 
+      }
+      .reqsent{
+        font-family:Courier New;
+        background-color: #979797;
+        color: #fefefe;
+      }
+      .badges{
+        position:relative;
+        display:flex;
+      }
+      .badges__square{
+        margin:10px;
+/*         border:1px solid #979797; */
+        height:120px;
+        width:120px;
+        border-radius:15px;
+      }
+      .badgesholder{
+        height:80px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+      .badgecircle{
+        width:30px;
+        height:30px;
+        border-radius:50px;
+        background-color: #979797;
+        margin-right:10px;
+      }
+
+      /*   popupwindow     */     
+      #popup{
+        visibility:hidden;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+        border-radius:6px;
+        z-index: 90;
+        height:280px;
+        width:280px;
+        background-color: #fff;
+        border:1px solid #979797;
+        transform:translateY(-480px);
+      }
+      .profile2__1{
+        width:100px;
+        height:100px;
+        border-radius:50%;
+        border:3px dashed #D0021B;
+/*         background-color: #979797; */
+        margin:18px;
+      }
+      .btnset{
+        display:flex;
+      }
+      .cancelbtn{
+        width:100px;
+        border:1px solid #979797;
+        cursor:pointer;
+        border-radius:15px;
+      }
+      .acceptbtn{
+        width:100px;
+        border:1px solid #979797;
+        color:#fefefe;
+        background-color: #979797;
+        cursor:pointer;
+       border-radius:15px;
+      }
+      a:active,a:hover{
+        text-decoration:none;
+      }
+
+
     </style>
+
 
 </head>
 <body>
     <!-- You may change the dimensions of this canvas -->
+    <section class="container">
     <canvas id="myCanvas" width="750px" height="750px"></canvas>
+    </section>
+  
+   <!--  Custom interactive prototype section     -->
+    <section class="container">
+     <div class="customsection">
+       <h4 class="headtext">CUSTOM INTERACTIVE PROTOTYPE</h4>
+       <div class="wrapper">
+         <div style="">Hello, <u>Riely </u></div>
+          <div class="profile"></div>
+          <h4 class="textstyle">ASHELY</h4>
+          <h5 class="textstyle">LV.3.0</h5>
+          <div class="statusdiv">
+            <h5 class="textstyle">GOAL:&nbsp Go to gym</h5>
+            <h5 class="textstyle">FREQ:&nbsp 3 times a week</h5>
+          </div>
+         <div class="reqbtn" id="addfriend">
+           <h5 class="textstyle" >Add Partner</h5>
+         </div>
+         <div class="badges">
+            <div class="badges__square">
+              <div class="badgesholder">
+                <div class="badgecircle"></div>
+                 <p class="textstyle">5 / 5</p>
+              </div>
+              <p class="textstyle">MISSION</p>
+           </div>
+           <div class="badges__square">
+              <div class="badgesholder">
+                <div class="badgecircle"></div>
+                 <p class="textstyle">3850</p>
+              </div>
+               <p class="textstyle">EXPERIENCE</p>
+           </div>
+         </div>
+       </div>
+      </div>
+    </section>
+
+     <!-- User 2 -->
+    <section class="container">
+
+     <div class="customsection">
+       <h4 id="#user2" class="headtext">USER 2:Asheley's interface</h4>
+       <div class="wrapper">
+         <div style="">Hello, <u>Asheley </u></div>
+          <div class="profile2"></div>
+          <h4 class="textstyle">Riely</h4>
+          <h5 class="textstyle">LV.4.0</h5>
+          <div class="statusdiv">
+            <h5 class="textstyle">GOAL:&nbsp Go to gym</h5>
+            <h5 class="textstyle">FREQ:&nbsp 3 times a week</h5>
+          </div>
+         <div class="reqbtn" >
+           <h5 class="textstyle">Add Partner</h5>
+         </div>
+         <div class="badges">
+            <div class="badges__square">
+              <div class="badgesholder">
+                <div class="badgecircle"></div>
+                 <p class="textstyle">7 / 8</p>
+              </div>
+              <p class="textstyle">MISSION</p>
+           </div>
+           <div class="badges__square">
+              <div class="badgesholder">
+                <div class="badgecircle"></div>
+                 <p class="textstyle">4550</p>
+              </div>
+               <p class="textstyle">EXPERIENCE</p>
+           </div>
+         </div>
+       </div>
+      <!--   Start  friend request popup window     -->
+        <div id="popup" class="friendrequest">
+           <div class="profile2__1"></div>
+          <p class="textstyle">Riely send you a partner request.</p>
+          <div class="btnset">
+            <a href="#user2">
+            <div class="textstyle cancelbtn">cancel</div>
+            </a>
+            <a href="#user2">
+           <div class="textstyle acceptbtn" id="acceptBtn" onclick="accept()">accept</div>
+           </a>
+          </div>
+        </div>
+     <!--   End  friend request popup window     -->
+      </div>
+
+  </section>
+  
 </body>
 <script>
-
-    // setting up the canvas and one paper tool
-    var canvas = document.getElementById('myCanvas');
+window.onload = function() {
+   var canvas = document.getElementById('myCanvas');
     paper.setup(canvas);
     var tool = new paper.Tool();
-
+    var col = ["red","blue","green","black","purple","orange"];
+    var id = 0;
+    
     // getting the URL (you may want to use for Exercise 3)
     var url = window.location.href;
+    if (url.indexOf("id") > -1) {
+      var idNum = url.split("id=");
+      id = parseInt(idNum[1],10);
+    }
+  
+    tool.minDistance = 40;
+    
+    var socket = new WebSocket('ws://p4-yidanyuan-yidanyuan752084.codeanyapp.com:8765/');
 
-    // var socket = new WebSocket(
-    //     'ws://your url here:8765/');
+    var pathList = [new paper.Path(),new paper.Path(),new paper.Path(),new paper.Path()];
+    
+
+    socket.onmessage = function(receivedMessage) {
+      console.log(receivedMessage);
+      if (receivedMessage.data == "visible") {
+        console.log("visible");
+           $("#popup").css('visibility', receivedMessage.data);
+        
+      }
+      else {
+       var jsonObject = JSON.parse(receivedMessage.data);
+       var color = jsonObject.col;
+       var user = parseInt(jsonObject.user,10);
+       if (pathList.length <= user) {
+         pathList.add(new paper.Path());
+       }
+       if (id == 2) {
+         var coord = jsonObject.coord;
+         var server_message = coord.split(",");
+         var newPath = pathList[user];
+        
+         newPath.strokeColor = color;
+         var pt = new paper.Point(parseInt(server_message[0],10), parseInt(server_message[1],10));
+       
+         newPath.add(pt);
+         newPath.lineTo(pt);
+       }
+      }
+    };
+  
+    socket.onclose = function(e) {
+        console.error('Socket closed unexpectedly!');
+    };
+  
+  
+    tool.onMouseDrag = function(event) {
+      var xx = event.point.x.toString();
+      var yy = event.point.y.toString();
+      var roughPath = pathList[id];
+      roughPath.strokeColor = col[id];      
+      
+      var obj = new Object();
+      obj.user = id.toString();
+      obj.col = col[id];
+      obj.coord = xx+","+yy;
+      var message= JSON.stringify(obj);
+
+      socket.send(message);
+      roughPath.add(event.point);
+      roughPath.lineTo(event.point);
+    };
+  
+        $(".reqbtn").click(
+          function(){
+            $(this).text("Send Request");
+            $(this).addClass("reqsent");
+            socket.send('visible');
+            //$("#popup").css('visibility','visible');
+          }
+      ); 
+}
+    // ### Excercise2
+    //Start Shake (https://www.haorooms.com/post/html5_DeviceMotionEvent)+ Erase (https://stackoverflow.com/questions/19054798/canvas-clear-in-paper-js )                             
+     if (window.DeviceMotionEvent) { 
+                     window.addEventListener('devicemotion',deviceMotionHandler, false);  
+            } 
+            var speed = 30;//speed
+            var x = y = z = lastX = lastY = lastZ = 0;
+            function deviceMotionHandler(eventData) {  
+              var acceleration =eventData.accelerationIncludingGravity;
+                    x = acceleration.x;
+                    y = acceleration.y;
+                    z = acceleration.z;
+                    if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed || Math.abs(z-lastZ) > speed) {
+                    //   Start Erase                  
+                    paper.project.activeLayer.removeChildren();
+                    paper.view.draw();
+                    //   End Erase                
+                    }
+                    lastX = x;
+                    lastY = y;
+                    lastZ = z;
+            }
+     //End Shake and  Erase
+    //erase via device shake(https://codepen.io/jkantner/pen/ZaMeyW) 
+    // paper.js canvas clear (https://stackoverflow.com/questions/19054798/canvas-clear-in-paper-js)
+  
+    //Start tilt
+     if (window.DeviceOrientationEvent) { 
+                     window.addEventListener('deviceorientation',deviceOrientationHandler, false);  
+            }
+     var lastGamma = 0;
+     function deviceOrientationHandler(event) {
+         var absolute = event.absolute;
+         var alpha    = event.alpha;
+         var beta     = event.beta;
+         var gamma    = event.gamma;
+         if (gamma>lastGamma && gamma>0) {
+             var p = paper.project.activeLayer.children[0];
+             console.log(p);
+             p.strokeColor = "blue";
+             lastGamma = gamma;
+             }
+     }
+  
+    //End tile
+
+     // Custom interactive 
+
+
+    function accept() {
+      $("#popup").css("visibility","hidden");
+    }
+
+
+    
 
 
 </script>
